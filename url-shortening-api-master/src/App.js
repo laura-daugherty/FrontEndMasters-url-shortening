@@ -3,11 +3,12 @@ import axios from 'axios'
 
 function App() {
   const [text, setText] = useState({
-    url: ""
+    text: ""
   })
+  const [short, setShort] = useState("")
 
   const handleChange = event => {
-    setText({ text:event.target.value})
+    setText({ text: event.target.value})
   }
 
   function shortenUrl(text) {
@@ -15,19 +16,42 @@ function App() {
     //   console.log("empty text", text )
     //   alert("You must enter a URL to shorten it")
     // } else {
-      console.log("text", text)
+      const texttext = text.text
+      console.log("texttext", texttext)
       axios
         .post("https://rel.ink/api/links/", {
-          "url":{text}
+          "url":texttext
         })
         .then((response) => {
-          console.log(response);
+          const hash = response.data.hashid;
+          return axios
+            .get("https://rel.ink/api/links/" + hash)
+            .then((response) => {
+              console.log("inner response", response)
+              setShort(response.data.url)
+            }), (error) => {
+              console.log("inner error", error)
+            }
         }, (error) => {
-          console.log(error);
+          console.log("error", error);
         });
     // }
   }
+  console.log("short", short)
 
+  // function displayShort() {
+  //   if (short === "") {
+  //     return (
+  //       <div></div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div>
+  //         {short}
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return (
     <div>
@@ -69,6 +93,9 @@ function App() {
           Shorten It!
         </button>
       </div>
+      {/* <div>
+        {displayShort()}
+      </div> */}
       <div>
         <h2>
           Advanced Statistics
