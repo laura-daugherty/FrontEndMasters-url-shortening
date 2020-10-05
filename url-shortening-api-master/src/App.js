@@ -3,31 +3,72 @@ import axios from 'axios'
 
 function App() {
   const [text, setText] = useState({
-    url: ""
+    text: ""
   })
+  const [short, setShort] = useState("")
 
   const handleChange = event => {
-    setText({ text:event.target.value})
+    setText({ text: event.target.value})
   }
 
   function shortenUrl(text) {
-    // if (text === "") {
-    //   console.log("empty text", text )
-    //   alert("You must enter a URL to shorten it")
-    // } else {
-      console.log("text", text)
+    if (text.text === "") {
+      console.log("empty text", text )
+      alert("You must enter a URL to shorten it")
+    } else {
+      const texttext = text.text
+      console.log("texttext", texttext)
       axios
         .post("https://rel.ink/api/links/", {
-          "url":{text}
+          "url":texttext
         })
         .then((response) => {
-          console.log(response);
+          const hash = response.data.hashid;
+          return axios
+            .get("https://rel.ink/api/links/" + hash)
+            .then((response) => {
+              console.log("inner response", response)
+              setShort(response.data.url)
+            }), (error) => {
+              console.log("inner error", error)
+            }
         }, (error) => {
-          console.log(error);
+          console.log("error", error);
         });
-    // }
+    }
   }
+  
+  const copyToClipboard = str => {
+    //create text area
+    const el = document.createElement('textarea');
+    // set text area value
+    el.value = str;
+    //add el to the page
+    document.body.appendChild(el);
+    //select el
+    el.select();
+    //copy el
+    document.execCommand('copy');
+    //remove el
+    document.body.removeChild(el);
+  };
 
+  function displayShort() {
+    if (short === "") {
+      return (
+        <div></div>
+      )
+    } else {
+      return (
+        <div>
+          {short}
+          <button onClick={copyToClipboard(short)}>
+            Copy to Clipboard
+          </button>
+        </div>
+      )
+    }
+  }
 
   return (
     <div>
@@ -68,6 +109,9 @@ function App() {
         <button type="button" onClick={() => shortenUrl(text)}>
           Shorten It!
         </button>
+      </div>
+      <div>
+        {displayShort()}
       </div>
       <div>
         <h2>
