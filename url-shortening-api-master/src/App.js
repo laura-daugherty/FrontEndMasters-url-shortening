@@ -35,9 +35,23 @@ function App() {
         }, (error) => {
           console.log("error", error);
         });
+    }
   }
-  }
-  console.log("short", short)
+  
+  const copyToClipboard = str => {
+    //create text area
+    const el = document.createElement('textarea');
+    // set text area value
+    el.value = str;
+    //add el to the page
+    document.body.appendChild(el);
+    //select el
+    el.select();
+    //copy el
+    document.execCommand('copy');
+    //remove el
+    document.body.removeChild(el);
+  };
 
   function displayShort() {
     if (short === "") {
@@ -48,6 +62,9 @@ function App() {
       return (
         <div>
           {short}
+          <button onClick={copyToClipboard(short)}>
+            Copy to Clipboard
+          </button>
         </div>
       )
     }
