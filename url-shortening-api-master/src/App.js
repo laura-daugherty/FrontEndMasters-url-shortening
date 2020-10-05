@@ -93,9 +93,9 @@ function App() {
           Shorten It!
         </button>
       </div>
-      {/* <div>
+      <div>
         {displayShort()}
-      </div> */}
+      </div>
       <div>
         <h2>
           Advanced Statistics
