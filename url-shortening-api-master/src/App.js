@@ -12,10 +12,10 @@ function App() {
   }
 
   function shortenUrl(text) {
-    // if (text === "") {
-    //   console.log("empty text", text )
-    //   alert("You must enter a URL to shorten it")
-    // } else {
+    if (text.text === "") {
+      console.log("empty text", text )
+      alert("You must enter a URL to shorten it")
+    } else {
       const texttext = text.text
       console.log("texttext", texttext)
       axios
@@ -35,7 +35,7 @@ function App() {
         }, (error) => {
           console.log("error", error);
         });
-    // }
+  }
   }
   console.log("short", short)
 
