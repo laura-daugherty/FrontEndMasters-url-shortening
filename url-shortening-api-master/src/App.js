@@ -39,19 +39,19 @@ function App() {
   }
   console.log("short", short)
 
-  // function displayShort() {
-  //   if (short === "") {
-  //     return (
-  //       <div></div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div>
-  //         {short}
-  //       </div>
-  //     )
-  //   }
-  // }
+  function displayShort() {
+    if (short === "") {
+      return (
+        <div></div>
+      )
+    } else {
+      return (
+        <div>
+          {short}
+        </div>
+      )
+    }
+  }
 
   return (
     <div>
