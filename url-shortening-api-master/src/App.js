@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
+import './app.css';
+
 
 function App() {
   const [text, setText] = useState({
@@ -24,14 +26,7 @@ function App() {
         })
         .then((response) => {
           const hash = response.data.hashid;
-          return axios
-            .get("https://rel.ink/api/links/" + hash)
-            .then((response) => {
-              console.log("inner response", response)
-              setShort(response.data.url)
-            }), (error) => {
-              console.log("inner error", error)
-            }
+          setShort("https://rel.ink/" + hash) 
         }, (error) => {
           console.log("error", error);
         });
