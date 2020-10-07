@@ -1,0 +1,312 @@
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px
+}
+
+.person {
+  padding-left: 10px;
+  max-width: 140%;
+  display: block;
+  padding-bottom: 20px
+}
+
+nav {
+  display: flex;
+  flex-flow: column;
+  background-color: hsl(257, 27%, 26%);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  margin-bottom: 0px
+}
+
+.first_nav {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0px
+}
+
+.second_nav {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid hsl(0, 0%, 75%);
+  padding-top: 25px;
+  padding-left: 0px
+}
+
+.navbutt {
+  background-color: hsl(257, 27%, 26%);
+  color: white;
+  padding: 15px
+}
+
+.navbutt:hover {
+  cursor: pointer
+}
+
+.signup {
+  background-color: hsl(180, 66%, 49%);
+  width: 90%;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.burger {
+  width: 20px;
+  height: 2px;
+  background-color: hsl(0, 0%, 75%);
+  margin: 6px 0;
+}
+
+.burgerButton {
+  border: none;
+  background-color: white;
+}
+
+.shorterLinks {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 20px 20px
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-top:0px;
+  margin-bottom: 10px
+}
+
+h3 {
+  font-weight: 500;
+  justify-self: center;
+  color: hsl(0, 0%, 75%);
+  margin-top: 0px;
+  font-size: 20px;
+  line-height: 1.5
+}
+
+.getStarted {
+  border: none;
+  border-radius: 25px;
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  font-size: 20px;
+  padding: 10px 30px 10px 30px;
+  font-weight: 700
+}
+
+.shortenInputDiv {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/bg-boost-mobile.svg");
+  background-color: hsl(260, 8%, 14%);
+  padding: 25px;
+  border-radius:10px;
+  margin: 50px 15px 50px 15px;
+}
+
+.shortenButt {
+  background-color: hsl(180, 66%, 49%);
+  /* width: 100%; */
+  color: white;
+  margin-top: 15px;
+  font-weight: 700;
+  padding: 10px;
+
+}
+
+.inputAndButt {
+  width: -webkit-fill-available;
+  /* margin: 5px 30px 5px 30px; */
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+::placeholder {
+  color: hsl(0, 0%, 75%);
+  opacity: 1;
+  font-weight: 200;
+}
+
+
+input:hover {
+  border: 2px solid hsl(0, 87%, 67%)
+}
+
+input[type="text"] { 
+  padding: 10px;
+  border: 2px solid hsl(260, 8%, 14%);
+}
+
+.shortDisplayDiv {
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 50px 15px 50px 15px;
+  border-radius: 10px;
+  word-wrap: break-word
+}
+
+.shortDisplayOne {
+  font-weight: 500;
+  border-bottom: 1px solid hsl(0, 0%, 75%);
+  padding: 10px
+}
+
+.shortDisplayTwo {
+  padding: 10px;
+  color: hsl(180, 66%, 49%)
+}
+
+.copyButt {
+  margin-top: 10px;
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 5px;
+  border: none
+}
+
+.copyButtPurp {
+  background-color: hsl(260, 8%, 14%);
+  color: white;
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+
+}
+
+.infoDiv {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center
+}
+
+
+h2 {
+  font-weight: 700;
+  margin-bottom: 0px
+}
+
+p {
+  text-align: center;
+  color: hsl(257, 7%, 63%);
+}
+
+.infoBlock {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: 80px 20px 0px 20px;
+  position: relative;
+  padding: 10px
+  
+}
+
+.lastBlock {
+  margin-bottom: 60px
+}
+
+
+
+.infoIcon {
+  background-color: hsl(260, 8%, 14%);
+  border-radius: 100%;
+  padding: 15px;
+  margin-top: -40px;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 0px
+}
+
+.stripe {
+  width: 7px;
+  height: 50px;
+  background-color: hsl(180, 66%, 49%);
+  margin-bottom: -60px;
+}
+
+.boostDiv {
+  background-image: url("./images/bg-boost-mobile.svg");
+  background-color: hsl(257, 27%, 26%);
+  height: 300px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fill-available;
+}
+
+.boost {
+  color: white;
+  padding-bottom: 20px
+}
+
+.footerDiv {
+  background-color: hsl(260, 8%, 14%);
+  color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center
+}
+
+h6 {
+  font-size: 29px
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+
+ul {
+  padding: 5px 0 5px 0
+  
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+  padding: 5px;
+  color: hsl(257, 7%, 63%);
+  font-weight: 200px
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.icons img {
+  padding: 10px 10px 40px 10px
+}
+
+.attribution {
+  color: hsl(257, 7%, 63%)
+}
+
+
+

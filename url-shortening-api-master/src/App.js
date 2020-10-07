@@ -1,11 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
+import './app.css';
+import person from "./images/illustration-working.svg"
+import logo from "./images/logo.svg"
+import brand from "./images/icon-brand-recognition.svg"
+import records from "./images/icon-detailed-records.svg"
+import customize from "./images/icon-fully-customizable.svg"
+import facebook from "./images/icon-facebook.svg"
+import insta from "./images/icon-instagram.svg"
+import pinterest from "./images/icon-pinterest.svg"
+import twitter from "./images/icon-twitter.svg"
 
 function App() {
   const [text, setText] = useState({
     text: ""
   })
   const [short, setShort] = useState("")
+  const [isMenu, setIsMenu] = useState(false)
+  const [response, setResponse] = useState({})
+  const [isCopied, setIsCopied] = useState(false)
 
   const handleChange = event => {
     setText({ text: event.target.value})
@@ -23,15 +36,10 @@ function App() {
           "url":texttext
         })
         .then((response) => {
+          console.log("response", response)
           const hash = response.data.hashid;
-          return axios
-            .get("https://rel.ink/api/links/" + hash)
-            .then((response) => {
-              console.log("inner response", response)
-              setShort(response.data.url)
-            }), (error) => {
-              console.log("inner error", error)
-            }
+          setShort("https://rel.ink/" + hash) 
+          setResponse(response)
         }, (error) => {
           console.log("error", error);
         });
@@ -51,6 +59,7 @@ function App() {
     document.execCommand('copy');
     //remove el
     document.body.removeChild(el);
+    setIsCopied(!isCopied)
   };
 
   function displayShort() {
@@ -58,38 +67,83 @@ function App() {
       return (
         <div></div>
       )
-    } else {
+    } else if (short !== "" && response.data && isCopied === false) {
+      console.log("false")
       return (
-        <div>
-          {short}
-          <button onClick={copyToClipboard(short)}>
-            Copy to Clipboard
+        <div className="shortDisplayDiv">
+          <div className="shortDisplayOne">
+            {response.data.url}
+          </div>
+          <div className="shortDisplayTwo">
+            <div className="short">
+              {short}
+            </div>
+            <button className="copyButt" onClick={() => copyToClipboard(short)}>
+              Copy
+            </button>
+          </div>
+        </div>
+      )
+    } else if (short !== "" && response.data && isCopied === true) {
+      console.log("true")
+      return (
+        <div className="shortDisplayDiv">
+        <div className="shortDisplayOne">
+          {response.data.url}
+        </div>
+        <div className="shortDisplayTwo">
+          <div className="short">
+            {short}
+          </div>
+          <button className="copyButtPurp" onClick={() => copyToClipboard(short)} >
+            Copied!
           </button>
         </div>
+      </div>
       )
     }
   }
+
+  function displayMenu() {
+    if (isMenu === false) {
+      return (
+        <img className="person" src={person} alt="person sitting at desk"/>
+      ) 
+    } else {
+      return (
+        <nav>
+          <menu className="first_nav">
+            <div className="navbutt">Features</div>
+            <div className="navbutt">Pricing</div>
+            <div className="navbutt">Resources</div>
+          </menu>
+          <menu className="second_nav">
+            <div className="navbutt">Login</div>
+            <div className="navbutt signup">Sign Up</div>
+          </menu>
+        </nav>
+      )
+    }
+  }
+
 
   return (
     <div>
       <header>
         <img
-          src=""
+          src={logo}
           alt="Shortly Logo"
         />
+        <button className="burgerButton" onClick={() => setIsMenu(!isMenu)}>
+          <div className="burger"></div>
+          <div className="burger"></div>
+          <div className="burger"></div>
+        </button>
       </header>
-      <nav>
-        <menu>
-          <button>Features</button>
-          <button>Pricing</button>
-          <button>Resources</button>
-        </menu>
-        <menu>
-          <button>Login</button>
-          <button>Sign Up</button>
-        </menu>
-      </nav>
       <div>
+        {displayMenu()}
+      </div>
+      <div className="shorterLinks">
         <h1>
           More than just shorter links
         </h1>
@@ -97,23 +151,25 @@ function App() {
           Build your brand’s recognition and get detailed insights 
           on how your links are performing.
         </h3>
-        <button>
+        <button className="getStarted">
           Get Started
         </button>
       </div>
-      <div>
+      <div className="shortenInputDiv">
         <input
+          className="inputAndButt"
           type="text"
           onChange={handleChange}
+          placeholder="Shorten a link here..."
         />
-        <button type="button" onClick={() => shortenUrl(text)}>
+        <button className="shortenButt inputAndButt" type="button" onClick={() => shortenUrl(text)}>
           Shorten It!
         </button>
       </div>
       <div>
         {displayShort()}
       </div>
-      <div>
+      <div className="infoDiv">
         <h2>
           Advanced Statistics
         </h2>
@@ -122,10 +178,11 @@ function App() {
           advanced statistics dashboard.
         </p>
       </div>
-      <div>
+      <div className="infoBlock">
         <img
-          src=""
+          src={brand}
           alt="chart"
+          className="infoIcon"
         />
         <h4>
           Brand Recognition
@@ -134,12 +191,14 @@ function App() {
           Boost your brand recognition with each click. Generic links don’t 
           mean a thing. Branded links help instil confidence in your content.  
         </p>
+        <div className="stripe"/>
       </div>
 
-      <div>
+      <div className="infoBlock">
         <img
-        src=""
+        src={records}
         alt="chart"
+        className="infoIcon"
         />
         <h4>
           Detailed Records
@@ -148,12 +207,16 @@ function App() {
           Gain insights into who is clicking your links. Knowing when and where 
           people engage with your content helps inform better decisions.    
         </p>
+        <div className="stripe"></div>
       </div>
-      <div>
-        <img
-        src=""
-        alt="chart"
-        />
+      <div className="infoBlock lastBlock">
+        <div className="imageCircle">
+          <img
+          src={customize}
+          alt="chart"
+          className="infoIcon"
+          />
+        </div>
         <h4>
           Fully Customizable
         </h4>
@@ -162,72 +225,78 @@ function App() {
           links, supercharging audience engagement.    
         </p>
       </div>
-      <div>
-        <h2>
+      <div className="boostDiv">
+        <h2 className="boost">
           Boost your links today
         </h2>
-        <button>
+        <button className="getStarted">
           Get Started
         </button>
       </div>
-      <img
-      src=""
-      alt=""
-      />
-      <h5>
-        Features
-      </h5>
-      <ul>
-        <button>Link Shortening</button>
-        <button>Branded Links</button>
-        <button>Analytics</button>
-      </ul>
-
-      <h5>
-        Resources
-      </h5>
-      <ul>
-        <button>Blog</button>
-        <button>Developers</button>
-        <button>Support</button>
-      </ul>
-      <h5>
-        Company
-      </h5>
-      <ul>
-        <button>About</button>
-        <button>Our Team</button>
-        <button>Careers</button>
-        <button>Contact</button>
-      </ul>
-      <button>
-        <img
-        src=""
-        alt="Facebook icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Twitter icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Pinterest icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Instagram icon"
-        />
-      </button>
-      <div className="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="#">Laura Daugherty</a>.
+      <div className="footerDiv">
+        <h6>
+          Shortly
+        </h6>
+        <h5>
+          Features
+        </h5>
+        <ul>
+          <li>Link Shortening</li>
+          <li>Branded Links</li>
+          <li>Analytics</li>
+        </ul>
+        <h5>
+          Resources
+        </h5>
+        <ul>
+          <li>Blog</li>
+          <li>Developers</li>
+          <li>Support</li>
+        </ul>
+        <h5>
+          Company
+        </h5>
+        <ul>
+          <li>About</li>
+          <li>Our Team</li>
+          <li>Careers</li>
+          <li>Contact</li>
+        </ul>
+        <div className="icons">
+          <div>
+            <img
+            src=
+            {facebook}
+            alt="Facebook icon"
+            />
+          </div>
+          <div>
+            <img
+            src={twitter}
+            alt="Twitter icon"
+            />
+          </div>
+          <div>
+            <img
+            src={pinterest}
+            alt="Pinterest icon"
+            />
+          </div>
+          <div>
+            <img
+            src={insta}
+            alt="Instagram icon"
+            />
+          </div>
+        </div>
+        
+        <div className="attribution">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+          Coded by <a href="lauradaughertydev.com">Laura Daugherty</a>.
+        </div>
       </div>
+      
+
     </div>
     
   )
