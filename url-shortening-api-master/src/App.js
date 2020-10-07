@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import './app.css';
-
+import person from "./images/illustration-working.svg"
+import logo from "./images/logo.svg"
 
 function App() {
   const [text, setText] = useState({
     text: ""
   })
   const [short, setShort] = useState("")
+  const [isMenu, setIsMenu] = useState(false)
+  const [response, setResponse] = useState({})
 
   const handleChange = event => {
     setText({ text: event.target.value})
@@ -25,8 +28,10 @@ function App() {
           "url":texttext
         })
         .then((response) => {
+          console.log("response", response)
           const hash = response.data.hashid;
           setShort("https://rel.ink/" + hash) 
+          setResponse(response)
         }, (error) => {
           console.log("error", error);
         });
@@ -53,10 +58,15 @@ function App() {
       return (
         <div></div>
       )
-    } else {
+    } else if (short !== "" && response.data) {
       return (
         <div>
-          {short}
+          <div>
+            {response.data.url}
+          </div>
+          <div>
+            {short}
+          </div>
           <button onClick={copyToClipboard(short)}>
             Copy to Clipboard
           </button>
@@ -65,26 +75,46 @@ function App() {
     }
   }
 
+  function displayMenu() {
+    if (isMenu === false) {
+      return (
+        <img className="person" src={person} alt="person sitting at desk"/>
+      ) 
+    } else {
+      return (
+        <nav>
+          <menu className="first_nav">
+            <div className="navbutt">Features</div>
+            <div className="navbutt">Pricing</div>
+            <div className="navbutt">Resources</div>
+          </menu>
+          <menu className="second_nav">
+            <div className="navbutt">Login</div>
+            <div className="navbutt signup">Sign Up</div>
+          </menu>
+        </nav>
+      )
+    }
+  }
+
+
   return (
     <div>
       <header>
         <img
-          src=""
+          src={logo}
           alt="Shortly Logo"
         />
+        <button className="burgerButton" onClick={() => setIsMenu(!isMenu)}>
+          <div className="burger"></div>
+          <div className="burger"></div>
+          <div className="burger"></div>
+        </button>
       </header>
-      <nav>
-        <menu>
-          <button>Features</button>
-          <button>Pricing</button>
-          <button>Resources</button>
-        </menu>
-        <menu>
-          <button>Login</button>
-          <button>Sign Up</button>
-        </menu>
-      </nav>
       <div>
+        {displayMenu()}
+      </div>
+      <div className="shorterLinks">
         <h1>
           More than just shorter links
         </h1>
@@ -92,16 +122,17 @@ function App() {
           Build your brand’s recognition and get detailed insights 
           on how your links are performing.
         </h3>
-        <button>
+        <button className="getStarted">
           Get Started
         </button>
       </div>
-      <div>
+      <div className="shortenInputDiv">
         <input
+          className="inputAndButt"
           type="text"
           onChange={handleChange}
         />
-        <button type="button" onClick={() => shortenUrl(text)}>
+        <button className="shortenButt inputAndButt" type="button" onClick={() => shortenUrl(text)}>
           Shorten It!
         </button>
       </div>
@@ -161,7 +192,7 @@ function App() {
         <h2>
           Boost your links today
         </h2>
-        <button>
+        <button className="getStarted">
           Get Started
         </button>
       </div>

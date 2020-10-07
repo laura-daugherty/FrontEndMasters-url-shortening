@@ -1,0 +1,133 @@
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px
+}
+
+.person {
+  padding-left: 10px;
+  max-width: 140%;
+  display: block;
+  padding-bottom: 20px
+}
+
+nav {
+  display: flex;
+  flex-flow: column;
+  background-color: hsl(257, 27%, 26%);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  margin-bottom: 0px
+}
+
+.first_nav {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0px
+}
+
+.second_nav {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid hsl(0, 0%, 75%);
+  padding-top: 25px;
+  padding-left: 0px
+}
+
+.navbutt {
+  background-color: hsl(257, 27%, 26%);
+  color: white;
+  padding: 15px
+}
+
+.navbutt:hover {
+  cursor: pointer
+}
+
+.signup {
+  background-color: hsl(180, 66%, 49%);
+  width: 90%;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.burger {
+  width: 20px;
+  height: 2px;
+  background-color: hsl(0, 0%, 75%);
+  margin: 6px 0;
+}
+
+.burgerButton {
+  border: none;
+  background-color: white;
+}
+
+.shorterLinks {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 20px 20px
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-top:0px;
+  margin-bottom: 10px
+}
+
+h3 {
+  font-weight: 500;
+  justify-self: center;
+  color: hsl(0, 0%, 75%);
+  margin-top: 0px;
+  font-size: 20px;
+  line-height: 1.5
+}
+
+.getStarted {
+  border: none;
+  border-radius: 25px;
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  font-size: 20px;
+  padding: 10px 30px 10px 30px;
+  font-weight: 700
+}
+
+.shortenInputDiv {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/bg-boost-mobile.svg");
+  background-color: hsl(260, 8%, 14%);
+  padding: 25px;
+  border-radius:10px;
+  margin: 50px 15px 50px 15px;
+}
+
+.shortenButt {
+  background-color: hsl(180, 66%, 49%);
+  /* width: 100%; */
+  color: white;
+  margin-top: 15px;
+  font-weight: 700
+}
+
+.inputAndButt {
+  width: 100%;
+  /* margin: 5px 30px 5px 30px; */
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 0 10px 0
+}
