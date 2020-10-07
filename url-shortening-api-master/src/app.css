@@ -120,14 +120,193 @@ h3 {
   /* width: 100%; */
   color: white;
   margin-top: 15px;
-  font-weight: 700
+  font-weight: 700;
+  padding: 10px;
+
 }
 
 .inputAndButt {
-  width: 100%;
+  width: -webkit-fill-available;
   /* margin: 5px 30px 5px 30px; */
   font-size: 20px;
   border-radius: 5px;
   border: none;
-  padding: 10px 0 10px 0
 }
+
+::placeholder {
+  color: hsl(0, 0%, 75%);
+  opacity: 1;
+  font-weight: 200;
+}
+
+
+input:hover {
+  border: 2px solid hsl(0, 87%, 67%)
+}
+
+input[type="text"] { 
+  padding: 10px;
+  border: 2px solid hsl(260, 8%, 14%);
+}
+
+.shortDisplayDiv {
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 50px 15px 50px 15px;
+  border-radius: 10px;
+  word-wrap: break-word
+}
+
+.shortDisplayOne {
+  font-weight: 500;
+  border-bottom: 1px solid hsl(0, 0%, 75%);
+  padding: 10px
+}
+
+.shortDisplayTwo {
+  padding: 10px;
+  color: hsl(180, 66%, 49%)
+}
+
+.copyButt {
+  margin-top: 10px;
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 5px;
+  border: none
+}
+
+.copyButtPurp {
+  background-color: hsl(260, 8%, 14%);
+  color: white;
+  width: -webkit-fill-available;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+
+}
+
+.infoDiv {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center
+}
+
+
+h2 {
+  font-weight: 700;
+  margin-bottom: 0px
+}
+
+p {
+  text-align: center;
+  color: hsl(257, 7%, 63%);
+}
+
+.infoBlock {
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: 80px 20px 0px 20px;
+  position: relative;
+  padding: 10px
+  
+}
+
+.lastBlock {
+  margin-bottom: 60px
+}
+
+
+
+.infoIcon {
+  background-color: hsl(260, 8%, 14%);
+  border-radius: 100%;
+  padding: 15px;
+  margin-top: -40px;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 0px
+}
+
+.stripe {
+  width: 7px;
+  height: 50px;
+  background-color: hsl(180, 66%, 49%);
+  margin-bottom: -60px;
+}
+
+.boostDiv {
+  background-image: url("./images/bg-boost-mobile.svg");
+  background-color: hsl(257, 27%, 26%);
+  height: 300px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fill-available;
+}
+
+.boost {
+  color: white;
+  padding-bottom: 20px
+}
+
+.footerDiv {
+  background-color: hsl(260, 8%, 14%);
+  color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center
+}
+
+h6 {
+  font-size: 29px
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+
+ul {
+  padding: 5px 0 5px 0
+  
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+  padding: 5px;
+  color: hsl(257, 7%, 63%);
+  font-weight: 200px
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.icons img {
+  padding: 10px 10px 40px 10px
+}
+
+.attribution {
+  color: hsl(257, 7%, 63%)
+}
+
+
+

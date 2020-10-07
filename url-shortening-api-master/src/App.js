@@ -3,6 +3,13 @@ import axios from 'axios'
 import './app.css';
 import person from "./images/illustration-working.svg"
 import logo from "./images/logo.svg"
+import brand from "./images/icon-brand-recognition.svg"
+import records from "./images/icon-detailed-records.svg"
+import customize from "./images/icon-fully-customizable.svg"
+import facebook from "./images/icon-facebook.svg"
+import insta from "./images/icon-instagram.svg"
+import pinterest from "./images/icon-pinterest.svg"
+import twitter from "./images/icon-twitter.svg"
 
 function App() {
   const [text, setText] = useState({
@@ -11,6 +18,7 @@ function App() {
   const [short, setShort] = useState("")
   const [isMenu, setIsMenu] = useState(false)
   const [response, setResponse] = useState({})
+  const [isCopied, setIsCopied] = useState(false)
 
   const handleChange = event => {
     setText({ text: event.target.value})
@@ -51,6 +59,7 @@ function App() {
     document.execCommand('copy');
     //remove el
     document.body.removeChild(el);
+    setIsCopied(!isCopied)
   };
 
   function displayShort() {
@@ -58,19 +67,39 @@ function App() {
       return (
         <div></div>
       )
-    } else if (short !== "" && response.data) {
+    } else if (short !== "" && response.data && isCopied === false) {
+      console.log("false")
       return (
-        <div>
-          <div>
+        <div className="shortDisplayDiv">
+          <div className="shortDisplayOne">
             {response.data.url}
           </div>
-          <div>
+          <div className="shortDisplayTwo">
+            <div className="short">
+              {short}
+            </div>
+            <button className="copyButt" onClick={() => copyToClipboard(short)}>
+              Copy
+            </button>
+          </div>
+        </div>
+      )
+    } else if (short !== "" && response.data && isCopied === true) {
+      console.log("true")
+      return (
+        <div className="shortDisplayDiv">
+        <div className="shortDisplayOne">
+          {response.data.url}
+        </div>
+        <div className="shortDisplayTwo">
+          <div className="short">
             {short}
           </div>
-          <button onClick={copyToClipboard(short)}>
-            Copy to Clipboard
+          <button className="copyButtPurp" onClick={() => copyToClipboard(short)} >
+            Copied!
           </button>
         </div>
+      </div>
       )
     }
   }
@@ -131,6 +160,7 @@ function App() {
           className="inputAndButt"
           type="text"
           onChange={handleChange}
+          placeholder="Shorten a link here..."
         />
         <button className="shortenButt inputAndButt" type="button" onClick={() => shortenUrl(text)}>
           Shorten It!
@@ -139,7 +169,7 @@ function App() {
       <div>
         {displayShort()}
       </div>
-      <div>
+      <div className="infoDiv">
         <h2>
           Advanced Statistics
         </h2>
@@ -148,10 +178,11 @@ function App() {
           advanced statistics dashboard.
         </p>
       </div>
-      <div>
+      <div className="infoBlock">
         <img
-          src=""
+          src={brand}
           alt="chart"
+          className="infoIcon"
         />
         <h4>
           Brand Recognition
@@ -160,12 +191,14 @@ function App() {
           Boost your brand recognition with each click. Generic links don’t 
           mean a thing. Branded links help instil confidence in your content.  
         </p>
+        <div className="stripe"/>
       </div>
 
-      <div>
+      <div className="infoBlock">
         <img
-        src=""
+        src={records}
         alt="chart"
+        className="infoIcon"
         />
         <h4>
           Detailed Records
@@ -174,12 +207,16 @@ function App() {
           Gain insights into who is clicking your links. Knowing when and where 
           people engage with your content helps inform better decisions.    
         </p>
+        <div className="stripe"></div>
       </div>
-      <div>
-        <img
-        src=""
-        alt="chart"
-        />
+      <div className="infoBlock lastBlock">
+        <div className="imageCircle">
+          <img
+          src={customize}
+          alt="chart"
+          className="infoIcon"
+          />
+        </div>
         <h4>
           Fully Customizable
         </h4>
@@ -188,72 +225,78 @@ function App() {
           links, supercharging audience engagement.    
         </p>
       </div>
-      <div>
-        <h2>
+      <div className="boostDiv">
+        <h2 className="boost">
           Boost your links today
         </h2>
         <button className="getStarted">
           Get Started
         </button>
       </div>
-      <img
-      src=""
-      alt=""
-      />
-      <h5>
-        Features
-      </h5>
-      <ul>
-        <button>Link Shortening</button>
-        <button>Branded Links</button>
-        <button>Analytics</button>
-      </ul>
-
-      <h5>
-        Resources
-      </h5>
-      <ul>
-        <button>Blog</button>
-        <button>Developers</button>
-        <button>Support</button>
-      </ul>
-      <h5>
-        Company
-      </h5>
-      <ul>
-        <button>About</button>
-        <button>Our Team</button>
-        <button>Careers</button>
-        <button>Contact</button>
-      </ul>
-      <button>
-        <img
-        src=""
-        alt="Facebook icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Twitter icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Pinterest icon"
-        />
-      </button>
-      <button>
-        <img
-        src=""
-        alt="Instagram icon"
-        />
-      </button>
-      <div className="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="#">Laura Daugherty</a>.
+      <div className="footerDiv">
+        <h6>
+          Shortly
+        </h6>
+        <h5>
+          Features
+        </h5>
+        <ul>
+          <li>Link Shortening</li>
+          <li>Branded Links</li>
+          <li>Analytics</li>
+        </ul>
+        <h5>
+          Resources
+        </h5>
+        <ul>
+          <li>Blog</li>
+          <li>Developers</li>
+          <li>Support</li>
+        </ul>
+        <h5>
+          Company
+        </h5>
+        <ul>
+          <li>About</li>
+          <li>Our Team</li>
+          <li>Careers</li>
+          <li>Contact</li>
+        </ul>
+        <div className="icons">
+          <div>
+            <img
+            src=
+            {facebook}
+            alt="Facebook icon"
+            />
+          </div>
+          <div>
+            <img
+            src={twitter}
+            alt="Twitter icon"
+            />
+          </div>
+          <div>
+            <img
+            src={pinterest}
+            alt="Pinterest icon"
+            />
+          </div>
+          <div>
+            <img
+            src={insta}
+            alt="Instagram icon"
+            />
+          </div>
+        </div>
+        
+        <div className="attribution">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+          Coded by <a href="lauradaughertydev.com">Laura Daugherty</a>.
+        </div>
       </div>
+      
+
     </div>
     
   )
