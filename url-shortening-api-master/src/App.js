@@ -139,10 +139,23 @@ function App() {
           <div className="burger"></div>
           <div className="burger"></div>
         </button>
+        <nav className="navNav">
+          <menu className="first_nav navRow">
+            <div className="navbutt">Features</div>
+            <div className="navbutt">Pricing</div>
+            <div className="navbutt">Resources</div>
+          </menu>
+          <menu className="second_nav navRow">
+            <div className="navbutt">Login</div>
+            <div className="navbutt signup">Sign Up</div>
+          </menu>
+        </nav>
       </header>
-      <div>
+      <div className="displayMenu">
         {displayMenu()}
       </div>
+
+
       <div className="shorterLinks">
         <h1>
           More than just shorter links
