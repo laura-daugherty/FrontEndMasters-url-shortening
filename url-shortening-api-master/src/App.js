@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios'
 import './app.css';
+
+//imgages//
 import person from "./images/illustration-working.svg"
 import logo from "./images/logo.svg"
 import brand from "./images/icon-brand-recognition.svg"
@@ -12,6 +14,7 @@ import pinterest from "./images/icon-pinterest.svg"
 import twitter from "./images/icon-twitter.svg"
 
 function App() {
+  //state//
   const [text, setText] = useState({
     text: ""
   })
@@ -20,6 +23,7 @@ function App() {
   const [response, setResponse] = useState({})
   const [isCopied, setIsCopied] = useState(false)
 
+  //input text handler//
   const handleChange = event => {
     setText({ text: event.target.value})
   }
@@ -30,7 +34,6 @@ function App() {
       alert("You must enter a URL to shorten it")
     } else {
       const texttext = text.text
-      console.log("texttext", texttext)
       axios
         .post("https://rel.ink/api/links/", {
           "url":texttext
@@ -157,16 +160,20 @@ function App() {
 
 
       <div className="shorterLinks">
-        <h1>
-          More than just shorter links
-        </h1>
-        <h3>
-          Build your brand’s recognition and get detailed insights 
-          on how your links are performing.
-        </h3>
-        <button className="getStarted">
-          Get Started
-        </button>
+        <div className="shorterLinksCont">
+          <div className="shorterLinksOne">
+            <h1>
+              More than just shorter links
+            </h1>
+            <h3>
+              Build your brand’s recognition and get detailed insights 
+              on how your links are performing.
+            </h3>
+            <button className="getStarted">
+              Get Started
+            </button>
+          </div>
+        </div>
       </div>
       <div className="shortenInputDiv">
         <input
@@ -191,52 +198,68 @@ function App() {
           advanced statistics dashboard.
         </p>
       </div>
-      <div className="infoBlock">
-        <img
-          src={brand}
-          alt="chart"
-          className="infoIcon"
-        />
-        <h4>
-          Brand Recognition
-        </h4>
-        <p>
-          Boost your brand recognition with each click. Generic links don’t 
-          mean a thing. Branded links help instil confidence in your content.  
-        </p>
-        <div className="stripe"/>
-      </div>
+      <div className="infoBlocksDiv"> 
+        <div div className="infoBlock firstBlock">
+          <div className="infoBlockDiv">
+            <img
+              src={brand}
+              alt="chart"
+              className="infoIcon"
+            />
+            <div className="infoBlockWords">
+              <h4>
+                Brand Recognition
+              </h4>
+              <p>
+                Boost your brand recognition with each click. Generic links don’t 
+                mean a thing. Branded links help instil confidence in your content.  
+              </p>
+            </div>
 
-      <div className="infoBlock">
-        <img
-        src={records}
-        alt="chart"
-        className="infoIcon"
-        />
-        <h4>
-          Detailed Records
-        </h4>
-        <p>
-          Gain insights into who is clicking your links. Knowing when and where 
-          people engage with your content helps inform better decisions.    
-        </p>
-        <div className="stripe"></div>
-      </div>
-      <div className="infoBlock lastBlock">
-        <div className="imageCircle">
-          <img
-          src={customize}
-          alt="chart"
-          className="infoIcon"
-          />
+          </div>
+          <div className="stripe"/>
         </div>
-        <h4>
-          Fully Customizable
-        </h4>
-        <p>
-          Improve brand awareness and content discoverability through customizable 
-          links, supercharging audience engagement.    
-        </p>
+
+        <div className="infoBlock middleBlock">
+          <div className="infoBlockDiv">
+            <img
+            src={records}
+            alt="chart"
+            className="infoIcon"
+            />
+            <div className="infoBlockWords">
+              <h4>
+                Detailed Records
+              </h4>
+              <p>
+                Gain insights into who is clicking your links. Knowing when and where 
+                people engage with your content helps inform better decisions.    
+              </p>
+            </div>
+          </div>
+          
+          <div className="stripe"></div>
+        </div>
+        <div className="infoBlock lastBlock">
+          <div className="infoBlockDiv">
+            <img
+            src={customize}
+            alt="chart"
+            className="infoIcon"
+            />
+            <div className="infoBlockWords">
+              <h4>
+                Fully Customizable
+              </h4>
+              <p>
+                Improve brand awareness and content discoverability through customizable 
+                links, supercharging audience engagement.    
+              </p>
+            </div>
+            
+          
+          </div>
+        </div>
       </div>
       <div className="boostDiv">
         <h2 className="boost">
@@ -246,70 +269,75 @@ function App() {
           Get Started
         </button>
       </div>
-      <div className="footerDiv">
-        <h6>
-          Shortly
-        </h6>
-        <h5>
-          Features
-        </h5>
-        <ul>
-          <li>Link Shortening</li>
-          <li>Branded Links</li>
-          <li>Analytics</li>
-        </ul>
-        <h5>
-          Resources
-        </h5>
-        <ul>
-          <li>Blog</li>
-          <li>Developers</li>
-          <li>Support</li>
-        </ul>
-        <h5>
-          Company
-        </h5>
-        <ul>
-          <li>About</li>
-          <li>Our Team</li>
-          <li>Careers</li>
-          <li>Contact</li>
-        </ul>
-        <div className="icons">
-          <div>
-            <img
-            src=
-            {facebook}
-            alt="Facebook icon"
-            />
+      <div>
+        <div className="footerDiv">
+          <h6>
+            Shortly
+          </h6>
+          <div className="footDiv">
+            <h5>
+              Features
+            </h5>
+            <ul>
+              <li>Link Shortening</li>
+              <li>Branded Links</li>
+              <li>Analytics</li>
+            </ul>
           </div>
-          <div>
-            <img
-            src={twitter}
-            alt="Twitter icon"
-            />
+          <div className="footDiv">
+            <h5>
+              Resources
+            </h5>
+            <ul>
+              <li>Blog</li>
+              <li>Developers</li>
+              <li>Support</li>
+            </ul>
           </div>
-          <div>
-            <img
-            src={pinterest}
-            alt="Pinterest icon"
-            />
+          <div className="footDiv companyDiv">
+            <h5>
+              Company
+            </h5>
+            <ul>
+              <li>About</li>
+              <li>Our Team</li>
+              <li>Careers</li>
+              <li>Contact</li>
+            </ul>
           </div>
-          <div>
-            <img
-            src={insta}
-            alt="Instagram icon"
-            />
+        
+          <div className="icons">
+            <div>
+              <img
+              src={facebook}
+              alt="Facebook icon"
+              />
+            </div>
+            <div>
+              <img
+              src={twitter}
+              alt="Twitter icon"
+              />
+            </div>
+            <div>
+              <img
+              src={pinterest}
+              alt="Pinterest icon"
+              />
+            </div>
+            <div>
+              <img
+              src={insta}
+              alt="Instagram icon"
+              />
+            </div>
           </div>
         </div>
-        
         <div className="attribution">
           Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
           Coded by <a href="lauradaughertydev.com">Laura Daugherty</a>.
         </div>
       </div>
-      
-
     </div>
     
   )
