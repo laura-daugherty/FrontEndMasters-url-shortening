@@ -29,10 +29,12 @@ function App() {
   }
 
   function shortenUrl(text) {
+    //if input is empty
     if (text.text === "") {
       console.log("empty text", text )
       alert("You must enter a URL to shorten it")
     } else {
+      //grab text from input and post to rel.ink
       const texttext = text.text
       axios
         .post("https://rel.ink/api/links/", {
@@ -71,7 +73,6 @@ function App() {
         <div></div>
       )
     } else if (short !== "" && response.data && isCopied === false) {
-      console.log("false")
       return (
         <div className="shortDisplayDiv">
           <div className="shortDisplayOne">
@@ -88,9 +89,8 @@ function App() {
         </div>
       )
     } else if (short !== "" && response.data && isCopied === true) {
-      console.log("true")
       return (
-        <div className="shortDisplayDiv">
+      <div className="shortDisplayDiv">
         <div className="shortDisplayOne">
           {response.data.url}
         </div>
@@ -158,7 +158,6 @@ function App() {
         {displayMenu()}
       </div>
 
-
       <div className="shorterLinks">
         <div className="shorterLinksCont">
           <div className="shorterLinksOne">
@@ -215,11 +214,9 @@ function App() {
                 mean a thing. Branded links help instil confidence in your content.  
               </p>
             </div>
-
           </div>
           <div className="stripe"/>
         </div>
-
         <div className="infoBlock middleBlock">
           <div className="infoBlockDiv">
             <img
@@ -237,8 +234,7 @@ function App() {
               </p>
             </div>
           </div>
-          
-          <div className="stripe"></div>
+          <div className="stripe stripeTwo"></div>
         </div>
         <div className="infoBlock lastBlock">
           <div className="infoBlockDiv">
@@ -256,8 +252,6 @@ function App() {
                 links, supercharging audience engagement.    
               </p>
             </div>
-            
-          
           </div>
         </div>
       </div>
@@ -305,7 +299,6 @@ function App() {
               <li>Contact</li>
             </ul>
           </div>
-        
           <div className="icons">
             <div>
               <img
