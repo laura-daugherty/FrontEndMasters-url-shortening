@@ -130,6 +130,10 @@
     font-weight: 700;
     width: fit-content
   }
+
+  .getStarted:hover {
+    cursor: pointer
+  }
   
   .shortenInputDiv {
     display: flex;
@@ -149,7 +153,10 @@
     margin-top: 15px;
     font-weight: 700;
     padding: 10px;
-  
+  }
+
+  .shortenButt:hover {
+    cursor: pointer
   }
   
   .inputAndButt {
@@ -321,6 +328,7 @@
     text-align: center
   }
   
+  
   ul {
     padding: 5px 0 5px 0
     
@@ -333,23 +341,28 @@
     color: hsl(257, 7%, 63%);
     font-weight: 200px
   }
+
+  li:hover {
+    cursor: pointer
+  }
   
   .icons {
     display: flex;
     justify-content: center;
     align-items: center
   }
-  
+
   .icons img {
     padding: 10px 10px 40px 10px
   }
   
+  .icons img:hover {
+    cursor: pointer
+  }
+
   .attribution {
     color: hsl(257, 7%, 63%)
   }
-
-
-
 /* desktop styling */
 
 @media(min-width: 1440px) {
@@ -372,6 +385,7 @@
   header img {
     height: 30px;
   }
+  
   .displayMenu {
     display: none;
   }
